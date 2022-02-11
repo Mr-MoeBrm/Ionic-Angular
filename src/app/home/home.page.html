@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Ionic QR Scanner
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content>
+ 
+  <ion-button expand="full" (click)="startScan()">
+    <ion-icon slot="start" name="qr-scanner"></ion-icon>
+    Start scan
+  </ion-button>
+ 
+  <!-- Shows our camera stream -->
+  <video #video [hidden]="!scanActive" width="100%"></video>
+ 
+  <!-- Used to render the camera stream images -->
+  <canvas #canvas hidden></canvas>
+ 
+  <!-- Stop our scanner preview if active -->
+  <ion-button expand="full" (click)="stopScan()" color="danger" *ngIf="scanActive">
+    <ion-icon slot="start" name="close"></ion-icon>
+    Stop scan
+  </ion-button> 
+</ion-content>
+<ion-content [ngClass]="{hide : result}" >
+    <ion-title>QR Code : {{scanResult}}</ion-title>
+    <ion-content>
+      <ion-button>Result</ion-button>
+      <ion-button>Return</ion-button>
+      <ion-text>{{Data}}</ion-text>
+    </ion-content>
+</ion-content>
